@@ -1,4 +1,5 @@
 <%- include('../includes/head', {pageTitle: 'Signup' }) %>
+  <link rel="stylesheet" href="/styles/forms.css">
   </head>
 
   <body>
@@ -6,7 +7,37 @@
       <main>
         <h1>Create New Account</h1>
         <form action="">
-
+          <p>
+            <label for="email">e-mail</label>
+            <input type="email" id="email" name="email" required>
+          </p>
+          <p>
+            <label for="c-email">confirm e-mail</label>
+            <input type="email" id="c-email" name="c-email" required>
+          </p>
+          <p>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" minlength="5" required>
+          </p>
+          <hr>
+          <p>
+            <label for="fullname">full name</label>
+            <input type="text" id="fullname" name="fullname" required>
+          </p>
+          <p>
+            <label for="street">street</label>
+            <input type="text" id="street" name="street" required>
+          </p>
+          <p>
+            <label for="post-code">post code</label>
+            <input type="text" id="post-code" name="post-code" minlength="5" maxlength="6" required>
+          </p>
+          <p>
+            <label for="city">city</label>
+            <input type="text" id="city" name="city" required>
+          </p>
+          <button class="btn">create account</button>
+          <p id="redirect-form"><a href="/login">login instead</a></p>
         </form>
       </main>
 
