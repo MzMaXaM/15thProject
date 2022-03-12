@@ -1,8 +1,8 @@
-function getSignup(req, res){
-
+function getSignup(req, res) {
+  res.render('auth/signup')
 }
 
-function getLogin(req, res){
+function getLogin(req, res) {
 
 }
 
