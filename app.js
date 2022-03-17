@@ -5,7 +5,8 @@ const
   path = require('path'),
   db = require('./data/database'),
   csrf = require('csurf'),
-  addCsrfTokenMidl = require('./middlewares/csrf-token')
+  addCsrfTokenMidl = require('./middlewares/csrf-token'),
+  createSessionConfig = require('./config/session')
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
