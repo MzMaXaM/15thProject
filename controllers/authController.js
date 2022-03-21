@@ -1,4 +1,5 @@
-const User = require('../models/user')
+const User = require('../models/user'),
+  authUtil = require('../util/authentication')
 
 function getSignup(req, res) {
   res.render('auth/signup')
@@ -23,6 +24,27 @@ function getLogin(req, res) {
   res.render('auth/login')
 }
 
+async function login(req, res) {
+  const
+    user = new User(req.body.email, req.body.password),
+    existUser = await user.getUserByEmail()
+
+  if (!existUser) {
+    res.redirect('/login')
+    return
+  }
+
+  const passwordIsCorrect = await user.checkUserPassword(existUser.password)
+
+  if (!passwordIsCorrect) {
+    res.redirect('/login')
+    return
+  }
+
+  authUtil.createUserSession(req, existUser, function () {
+    res.redirect('/')
+  })
+}
 
 module.exports = {
   getSignup: getSignup,

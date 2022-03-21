@@ -2,6 +2,8 @@ const
   express = require('express'),
   app = express(),
   authRoutes = require('./routes/authRoutes'),
+  baseRoutes = require('./routes/baseRoutes'),
+  productsRoutes = require('./routes/productsRoutes'),
   path = require('path'),
   db = require('./data/database'),
   csrf = require('csurf'),
@@ -24,6 +26,8 @@ app.use(csrf())
 app.use(addCsrfTokenMidl)
 
 app.use(authRoutes)
+app.use(baseRoutes)
+app.use(productsRoutes)
 
 
 db.connectToDatabase()
